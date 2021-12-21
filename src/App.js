@@ -22,6 +22,9 @@ class MainPage extends Component {
                   <h1>Lin Yang-Yu</h1> 
                   <p>is</p> 
                   <p>having PTO</p>
+                  <p>....</p>
+                  <p>while you are working, </p>
+                  <p>he is simply happy</p>
                 </div>
               </div>
             </div>
@@ -31,14 +34,19 @@ class MainPage extends Component {
                   <div className="flip-card-text-gap">When?</div>
                 </div>
                 <div class="flip-card-back">
-                  <h1>John Doe</h1> 
-                  <p>Architect & Engineer</p> 
-                  <p>We love that guy</p>
+                  <p>from</p> 
+                  <p>23 December</p>
+                  <p>(Thursday)</p>
+                  <p>to</p> 
+                  <p>27 December</p>
+                  <p>(Monday)</p>
+                  <p>will be back on Tuesday</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div className="surprise-text" onClick={() => {alert("no")}}>Surprise?</div>
       </body>
     )
   }
