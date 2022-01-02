@@ -3,15 +3,28 @@
   display: flex;
   margin-top: 71px;
 }
+.third-main-frame {
+  display: flex;
+  margin-top: 11px;
+}
 .margin-center {
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.second-margin-center {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 .flip-card {
+  margin: 5px;
   background-color: transparent;
-  width: 300px;
-  height: 300px;
+  width: 191px;
+  height: 191px;
   perspective: 1000px;
+  border: 1px solid bisque;
+  border-radius: 7px;
 }
 .flip-card-inner {
   position: relative;
@@ -24,6 +37,7 @@
 }
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
+  border: 1px solid rgb(51, 34, 14);
 }
 .flip-card-front, .flip-card-back {
   position: absolute;
@@ -34,16 +48,20 @@
 }
 .flip-card-front {
   background-color: rgb(255, 255, 255);
-  font-family:cursive;
-  font-size: 31px;
+  font-family: cursive;
+  font-size: 19px;
   color: black;
-}
-.flip-card-text-gap {
-  margin-top: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .flip-card-back {
-  background-color: #2980b9;
-  color: white;
+  background-color: #93b929;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: rgb(34, 33, 33);
   transform: rotateY(180deg);
 }
 
@@ -80,6 +98,29 @@
   }
 }
 
+
+.text-center {
+  text-align: center;
+}
+.text-pointer {
+  cursor: pointer;
+}
+.text-pointer:hover {
+  color: rgba(77, 17, 17);
+}
+
+
+.question-text-row {
+  font-size: 31px;
+  font-family: cursive;
+  margin-top: 31px;
+}
+
+.centeline-isolation {
+  width: 71%;
+  text-align: center;
+  margin: 0 auto;
+}
 
 .surprise-text {
   text-align: center;
