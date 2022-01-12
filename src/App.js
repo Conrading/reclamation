@@ -16,7 +16,7 @@ class MainPage extends Component {
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                  <div>Song of 2021</div>
+                  <div>My favorite Song in 2021</div>
                 </div>
                 <div class="flip-card-back">
                   <div>
@@ -85,68 +85,16 @@ class MainPage extends Component {
                 </div>
                 <div class="flip-card-back">
                   <div>
-                    <div>from <b>1/12</b> Wednesday</div>
-                    <div>to <b>1/17</b> Thursday</div>
+                    <div>from <b>1/13</b> Thursday</div>
+                    <div>to <b>1/14</b> Friday</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <br />
         <div className='centeline-isolation'><hr /></div>
-        <div className='question-text-row text-center'>Which sport league generate most money</div>
-        <div className="third-main-frame">
-          <div className="margin-center">
-            <div class="flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <div>National Football League (NFL)</div>
-                </div>
-                <div class="flip-card-back">
-                  <div>
-                    <b className='text-pointer' onClick={() => {window.location = `https://en.wikipedia.org/wiki/2019_NFL_season`}}>16 billion Euro in 2019</b>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <div>Major League Baseball (MLB)</div>
-                </div>
-                <div class="flip-card-back">
-                  <div>
-                    <b className='text-pointer' onClick={() => {window.location = `https://en.wikipedia.org/wiki/2019_Major_League_Baseball_season`}}>10 billion Euro in 2019</b>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <div>National Basketball Association (NBA)</div>
-                </div>
-                <div class="flip-card-back">
-                  <div>
-                    <b className='text-pointer' onClick={() => {window.location = `https://en.wikipedia.org/wiki/2018%E2%80%9319_NBA_season`}}>8 billion Euro in 2019</b>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <div>Premier League (EPL)</div>
-                </div>
-                <div class="flip-card-back">
-                  <div>
-                    <b className='text-pointer' onClick={() => {window.location = `https://en.wikipedia.org/wiki/2018%E2%80%9319_Premier_League`}}>5.3 billion Euro in 2019</b>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </body>
     )
   }
