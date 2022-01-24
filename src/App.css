@@ -1,72 +1,60 @@
 
 .main-frame {
-  display: flex;
   margin-top: 71px;
 }
-.third-main-frame {
-  display: flex;
-  margin-top: 11px;
-}
-.margin-center {
+.jedes-linie-gesprach {
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  height: 31px;
+  width: 71%;
 }
-.second-margin-center {
+.jedes-linie-gesprach-inhalt {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .1em solid rgb(255, 170, 0); /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  letter-spacing: .3em; /* Adjust as needed */
+  animation: 
+    typing 5.1s steps(31, end),
+    blink-caret .75s step-end infinite;
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color:  rgb(255, 170, 0); }
+}
+.jedes-linie-gesprach-font {
+  letter-spacing: .3em;
+  height: 37px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 17px;
+}
+
+
+.antwort-frame {
+  width: 71%;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
 }
-.flip-card {
-  margin: 5px;
-  background-color: transparent;
-  width: 191px;
-  height: 191px;
-  perspective: 1000px;
-  border: 1px solid bisque;
-  border-radius: 7px;
-}
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-  border: 1px solid rgb(51, 34, 14);
-}
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-.flip-card-front {
-  background-color: rgb(255, 255, 255);
-  font-family: cursive;
-  font-size: 19px;
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.flip-card-back {
-  background-color: #232423;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.antwort-defult-text {
+  overflow: hidden;
+  white-space: nowrap;
+  height: 31px;
+  letter-spacing: .1em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 15px;
-  color: rgb(245, 233, 233);
-  transform: rotateY(180deg);
+  font-weight: 200;
+  color: darkmagenta;
+  animation: frage 13s steps(31, end);
 }
-
-
-
+@keyframes frage {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -98,7 +86,14 @@
   }
 }
 
-
+.player-frame {
+  width: 71%;
+  margin: 0 auto;
+}
+.player-center {
+  width: 100%;
+  margin: 0 auto;
+}
 .text-center {
   text-align: center;
 }
@@ -110,26 +105,10 @@
 }
 
 
-.question-text-row {
-  font-size: 31px;
-  font-family: cursive;
-  margin-top: 31px;
-}
 
 .centeline-isolation {
+  font-weight: 200;
   width: 71%;
   text-align: center;
   margin: 0 auto;
-}
-
-.surprise-text {
-  text-align: center;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 31px;
-  margin-top: 51px;
-  cursor: pointer;
-  color: rgb(255, 255, 255);
-}
-.surprise-text:hover {
-  color: brown;
 }
