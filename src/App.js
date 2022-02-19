@@ -1,96 +1,84 @@
-import React, { Component } from 'react'
+import { useState } from 'react';
 import './App.css';
+import km from './km.json'
 
-class MainPage extends Component {
-  constructor () {
-    super ();
-    this.state = {
-      anwortFullText: "Hi, I am ooo, from Wednesday Jan.26 to Thrusday Jan.27, will be back on Friday Jan.28",
-      step: null
+function MainPage () {
+  const [showTable, setShowTable] = useState(true)
+  let currentPlay = 1
+  function switchPage (n) {
+    playPage(currentPlay += n)
+  }
+  function playPage (n) {
+    var i
+    const jedesBild = document.getElementsByClassName('slideShowjedesBild')
+    if (n > jedesBild.length) {currentPlay = 1}
+    if (n < 1) {currentPlay = jedesBild.length}
+    for (i = 0; i < jedesBild.length; i++) {
+      jedesBild[i].style.display = "none"
     }
+    jedesBild[currentPlay-1].style.display = "block"
   }
-  render () {
-    return (
-      <body>
-        <div className="main-frame">
-          {this.state.step === null &&
-          <div className='jedes-linie-gesprach'>
-            <div className='jedes-linie-gesprach-inhalt'>
-              <div className='jedes-linie-gesprach-font text-pointer' onClick={() => {this.setState({ step: "erste" })}}>{this.state.anwortFullText}</div>
+  return (
+    <div>
+      {showTable === true && <div className='main-frame'>
+        <table className='updateTableFrame'>
+          <tr className='updateTableTitleUniversal'>
+            <th className='updateTableTitleErste'>Section</th>
+            <th>Field</th>
+            <th className='updateTableTitleErste'>Update from</th>
+          </tr>
+          <tr className='updateTableContent'>
+            <td className='updateTableContentJedes' onClick={() => {setShowTable(false)}}>{km.jedes[0].section}</td>
+            <td className='updateTableContentJedes' onClick={() => {setShowTable(false)}}>{km.jedes[0].field}</td>
+            <td className='updateTableContentJedes' onClick={() => {setShowTable(false)}}>{km.jedes[0].update}</td>
+          </tr>
+        </table>
+      </div>}
+      {showTable === false && 
+      <div className='main-frame'>
+        <div className='jedesUpdateFrame'>
+          <div className='makeRow'>
+            <div className='jedesUpdateFieldFrame'>
+              <div className='jedesUpdateFieldRow makeRow'>
+                <div className='jedesUpdateFieldTitle'>Update: </div>
+                <div className='jedesUpdateFieldImport'>{km.jedes[0].update}</div>
+              </div>
+              <div className='jedesUpdateFieldRow makeRow'>
+                <div className='jedesUpdateFieldTitle'>Section: </div>
+                <div className='jedesUpdateFieldImport'>{km.jedes[0].section}</div>
+              </div>
+              <div className='jedesUpdateFieldRow makeRow'>
+                <div className='jedesUpdateFieldTitle'>Field: </div>
+                <div className='jedesUpdateFieldImport'>{km.jedes[0].field}</div>
+              </div>
+              <div className='jedesUpdateFieldRow makeRow'>
+                <div className='jedesUpdateFieldTitle'>Choice: </div>
+                <div className='jedesUpdateFieldImport'>{km.jedes[0].option}</div>
+              </div>
             </div>
-          </div>}
-          <br />
-          {this.state.step === "erste" &&
-          <div className='jedes-linie-gesprach'>
-            <div className='jedes-linie-gesprach-inhalt'>
-              <div className='jedes-linie-gesprach-font text-pointer' onClick={() => {this.setState({ step: "zweite" })}}>thanks for paying attention, umm.. thanks .. um..</div>
+            <div className='jedesUpdateFieldFrame'>
+              <div className='jedesUpdateFieldRow'>
+                <div className='jedesUpdateFieldTitle'>Commend:</div>
+                <div>{km.jedes[0].commend}</div>
+              </div>
             </div>
-          </div>}
-          <br />
-          {this.state.step === "zweite" &&
-          <div className='jedes-linie-gesprach'>
-            <div className='jedes-linie-gesprach-inhalt'>
-              <div className='jedes-linie-gesprach-font text-pointer' onClick={() => {this.setState({ step: "dreite" })}}>Do you happen to know someone?</div>
+          </div>
+          <div className='slideShowFrame'>
+            <div className='sliderExample'>- Example -</div>
+            <div className='slideShowContainer'>
+              <img className='slideShowjedesBild' src="https://upload.wikimedia.org/wikipedia/commons/f/f1/An_example_for_a_nailed_note.jpg" />
+              <img className='slideShowjedesBild' src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Blocksatz-Beispiel_deutsch%2C_German_text_sample_with_fully_justified_text.svg" />
+              <div className='sliderbottomFrame makeRow'>
+                <button className='silderSwitcher' onClick={() => {switchPage(-1)}}>❮</button>
+                <button className='silderSwitcher' onClick={() => {switchPage(1)}}>❯</button>
+              </div>
             </div>
-          </div>}
-          <br />
-          {this.state.step === "dreite" &&
-          <div className='jedes-linie-gesprach'>
-            <div className='jedes-linie-gesprach-inhalt'>
-              <div className='jedes-linie-gesprach-font text-pointer' onClick={() => {this.setState({ step: "viewrte" })}}>someone who plays music, any type, any instruments, I am looking for partner, just for fun</div>
-            </div>
-          </div>}
-          <br />
-          {this.state.step === "viewrte" &&
-          <div className='jedes-linie-gesprach'>
-            <div className='jedes-linie-gesprach-inhalt'>
-              <div className='jedes-linie-gesprach-font text-pointer' onClick={() => {this.setState({ step: "funfte" })}}>Just cover some songs, something catchy, something familiar</div>
-            </div>
-          </div>}
-          <br />
-          {this.state.step === "viewrte" &&
-          <div className='player-frame'>
-            <br />
-            <iframe width="511" height="100" scrolling="no" frameborder="no" allow="autoplay" className='player-center'
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1176083725&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-          </div>}
-          {this.state.step === "viewrte" &&
-          <div className='player-frame'>
-            <br />
-            <iframe width="1280" height="540" src="https://www.youtube.com/embed/I2dyKtSbsbM" className='player-center'
-            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>}
-          <br />
-          {this.state.step === "funfte" &&
-          <div className='jedes-linie-gesprach'>
-            <div className='jedes-linie-gesprach-inhalt'>
-              <div className='jedes-linie-gesprach-font text-pointer' onClick={() => {this.setState({ step: "sechte" })}}>For sure some Jazz can be super cool, just don't know whether my piano can follow </div>
-            </div>
-          </div>}
-          {this.state.step === "funfte" &&
-          <div className='player-frame'>
-            <br />
-            <iframe width="510" height="315" src="https://www.youtube.com/embed/tpGOXpvqtbY" className='player-center'
-            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>}
-          <br />
-          {this.state.step === "sechte" &&
-          <div className='jedes-linie-gesprach'>
-            <div className='jedes-linie-gesprach-inhalt'>
-              <div className='jedes-linie-gesprach-font text-pointer' onClick={() => {this.setState({ step: "siebte" })}}>if you happen to know someone, who would be interested, that can be awesome</div>
-            </div>
-          </div>}
-          <br />
-          {this.state.step === "siebte" &&
-          <div className='jedes-linie-gesprach'>
-            <div className='jedes-linie-gesprach-inhalt'>
-              <div className='jedes-linie-gesprach-font text-pointer' onClick={() => {this.setState({ step: null })}}>..thanks</div>
-            </div>
-          </div>}
+          </div>
+          <div className='returnButton' onClick={() => {setShowTable(true)}}>Return</div>
         </div>
-      </body>
-    )
-  }
+      </div>}
+    </div>
+  )
 }
 
 export default MainPage;

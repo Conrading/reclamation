@@ -1,114 +1,101 @@
 
 .main-frame {
+  width: 71%;
+  margin: 0 auto;
+}
+.updateTableFrame {
   margin-top: 71px;
-}
-.jedes-linie-gesprach {
-  margin: 0 auto;
-  height: 31px;
-  width: 71%;
-}
-.jedes-linie-gesprach-inhalt {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .1em solid rgb(255, 170, 0); /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  letter-spacing: .3em; /* Adjust as needed */
-  animation: 
-    typing 5.1s steps(31, end),
-    blink-caret .75s step-end infinite;
-}
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color:  rgb(255, 170, 0); }
-}
-.jedes-linie-gesprach-font {
-  letter-spacing: .3em;
-  height: 37px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 17px;
-}
-
-
-.antwort-frame {
-  width: 71%;
-  margin: 0 auto;
-}
-.antwort-defult-text {
-  overflow: hidden;
-  white-space: nowrap;
-  height: 31px;
-  letter-spacing: .1em;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 15px;
-  font-weight: 200;
-  color: darkmagenta;
-  animation: frage 13s steps(31, end);
-}
-@keyframes frage {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.player-frame {
-  width: 71%;
-  margin: 0 auto;
-}
-.player-center {
   width: 100%;
-  margin: 0 auto;
 }
-.text-center {
+.updateTableFrame th {
+  border: 1px solid blue;;
+}
+.updateTableTitleUniversal {
+  background-color: brown;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: beige;
+  height: 31px;
+}
+.updateTableTitleErste {
+  width: 23%;
+  padding: 11px;
+}
+.updateTableContent {
   text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 19px;
 }
-.text-pointer {
+.updateTableContentJedes {
+  padding: 17px;
   cursor: pointer;
 }
-.text-pointer:hover {
-  color: rgb(119, 65, 65);
+.updateTableContentJedes:hover {
+  font-weight: 600;
+  color: brown;
 }
-
-
-
-.centeline-isolation {
-  font-weight: 200;
-  width: 71%;
+.jedesUpdateFrame {
+  margin-top: 31px;
+  width: 100%;
+  border: 1px solid aliceblue;
+  border-radius: 5px;
+  padding: 7px;
+  box-shadow: 0px 1px 1px black;
+}
+.jedesUpdateFrame:hover {
+  box-shadow: 0px 3px 3px black;
+}
+.jedesUpdateFieldFrame {
+  width: 51%;
+  border: 1px solid brown;
+  border-radius: 5px;
+  margin: 1px;
+  padding: 5px;
+}
+.jedesUpdateFieldRow {
+  margin: 11px;
+}
+.jedesUpdateFieldTitle {
+  font-family:'Courier New', Courier, monospace;
+  font-size: 21px;
+  width: 17%;
+}
+.jedesUpdateFieldImport {
+  font-size: 21px;
+}
+.slideShowFrame {
+  margin: 7px;
+  width: 100%;
+}
+.sliderExample {
   text-align: center;
+  font-size: 31px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 17px;
+}
+.slideShowContainer {
+  margin-top: 11px;
+}
+.slideShowjedesBild {
+  width: 1171px;
+  height: 511px;
+  display: none;
   margin: 0 auto;
+} 
+.sliderbottomFrame {
+  width: 100%;
+  margin-top: 31px;
+}
+.silderSwitcher {
+  background-color: rgb(48, 19, 19);
+  font-weight: 600;
+  color: beige;
+  width: 71px;
+  border-radius: 3px;
+  margin: 0 auto;
+}
+.returnButton {
+  cursor: pointer;
+}
+.makeRow {
+  display: flex;
 }
