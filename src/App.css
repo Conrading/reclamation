@@ -1,101 +1,95 @@
 
-.main-frame {
-  width: 71%;
+.main-title {
   margin: 0 auto;
-}
-.updateTableFrame {
-  margin-top: 71px;
-  width: 100%;
-}
-.updateTableFrame th {
-  border: 1px solid blue;;
-}
-.updateTableTitleUniversal {
-  background-color: brown;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  color: beige;
-  height: 31px;
-}
-.updateTableTitleErste {
-  width: 23%;
-  padding: 11px;
-}
-.updateTableContent {
   text-align: center;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 19px;
-}
-.updateTableContentJedes {
-  padding: 17px;
-  cursor: pointer;
-}
-.updateTableContentJedes:hover {
-  font-weight: 600;
-  color: brown;
-}
-.jedesUpdateFrame {
-  margin-top: 31px;
-  width: 100%;
-  border: 1px solid aliceblue;
-  border-radius: 5px;
-  padding: 7px;
-  box-shadow: 0px 1px 1px black;
-}
-.jedesUpdateFrame:hover {
-  box-shadow: 0px 3px 3px black;
-}
-.jedesUpdateFieldFrame {
-  width: 51%;
-  border: 1px solid brown;
-  border-radius: 5px;
-  margin: 1px;
-  padding: 5px;
-}
-.jedesUpdateFieldRow {
-  margin: 11px;
-}
-.jedesUpdateFieldTitle {
-  font-family:'Courier New', Courier, monospace;
-  font-size: 21px;
-  width: 17%;
-}
-.jedesUpdateFieldImport {
-  font-size: 21px;
-}
-.slideShowFrame {
-  margin: 7px;
-  width: 100%;
-}
-.sliderExample {
-  text-align: center;
+  margin: 31px;
   font-size: 31px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  margin: 17px;
-}
-.slideShowContainer {
-  margin-top: 11px;
-}
-.slideShowjedesBild {
-  width: 1171px;
-  height: 511px;
-  display: none;
-  margin: 0 auto;
-} 
-.sliderbottomFrame {
-  width: 100%;
-  margin-top: 31px;
-}
-.silderSwitcher {
-  background-color: rgb(48, 19, 19);
-  font-weight: 600;
-  color: beige;
-  width: 71px;
-  border-radius: 3px;
-  margin: 0 auto;
-}
-.returnButton {
-  cursor: pointer;
+  color: blue;
+  font-family: cursive;
 }
 .makeRow {
   display: flex;
+}
+.centeringText {
+  text-align: center;
+}
+
+
+.center-by-margin {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 17px;
+  margin: 0 auto;
+  width: 71%;
+}
+
+.card-project {
+  border: 1px solid rgba(77, 17, 17);
+  border-radius: 3px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  max-height: 301px;
+  width: 301px;
+  margin-left: 3px;
+  margin-top: 3px;
+}
+.miesiąc {
+  margin: 3%;
+  padding-left: 7px;
+}
+.limit-width-sieben {
+  margin-left: 3%;
+  width: 91%;
+}
+.tydzień {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: 3%;
+}
+.tydzień-sunday {
+  margin-left: 3%;
+  font-weight: 500;
+  color: brown;
+}
+.tydzień-saturday {
+  color: darkmagenta;
+  text-align: center;
+}
+.dni-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: 3%;
+  padding: 2px;
+}
+.dni-pto-text {
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+  color: firebrick;
+  background-color: bisque;
+}
+.dni-bank-text {
+  text-align: center;
+  font-weight: 600;
+  color: darkcyan;
+  background-color: aquamarine;
+}
+
+.remark {
+  cursor: pointer;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 17px;
+  padding-top: 71px;
+}
+.bottom-note {
+  margin: 0 auto;
+  padding-top: 37px;
+  width: 71%;
+}
+.bottom-note-bank {
+  color: darkcyan;
+}
+.bottom-note-PTO {
+  color: firebrick;
 }
