@@ -75,7 +75,9 @@ class Kalendarz extends Component {
       <body>
         <div className='main-title'>2022 Calendar</div>
         <div className='center-by-margin'>{miesiąc}</div>
-        <div className='remark' onClick={() => {this.setState({remark: null})}}>{this.state.remark}</div>
+        <div className='remark-frame'>
+          <div className='remark' onClick={() => {this.setState({remark: null})}}>{this.state.remark}</div>
+        </div>
         <div className='bottom-note'>
           <div className='bottom-note-bank'>* Bank Holiday in Poland</div>
           <div className='bottom-note-PTO'>* PTO duration</div>

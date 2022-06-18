@@ -33,6 +33,9 @@
   margin-left: 3px;
   margin-top: 3px;
 }
+.card-project:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
 .miesiąc {
   margin: 3%;
   padding-left: 7px;
@@ -64,9 +67,14 @@
 .dni-pto-text {
   cursor: pointer;
   text-align: center;
-  font-weight: 600;
+  font-weight: 400;
   color: firebrick;
   background-color: bisque;
+}
+.dni-pto-text:hover {
+  transition: 0.3s;
+  font-weight: 800;
+  color: brown;
 }
 .dni-bank-text {
   text-align: center;
@@ -75,12 +83,35 @@
   background-color: aquamarine;
 }
 
+.remark-frame {
+  height: 71px;
+  margin: 0 auto;
+}
 .remark {
   cursor: pointer;
   text-align: center;
-  margin: 0 auto;
+  margin-top: 31px;
+  color: blue;
+  font-family: cursive;
   font-size: 17px;
-  padding-top: 71px;
+  animation-duration: 3s;
+  animation-name: remarking;
+}
+@keyframes remarking {
+    0% {
+      color: rgb(63, 61, 61);
+    }
+    51% {
+      font-size: 21px;
+      color: rgb(117, 5, 5);
+      text-shadow: 0 0 10px #fff,
+                   0 0 20px #fff, 
+                   0 0 40px #fff;
+    }
+    100% {
+      font-size: 17px;
+      color: blue;
+    }
 }
 .bottom-note {
   margin: 0 auto;
