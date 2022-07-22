@@ -12,8 +12,8 @@ class Kalendarz extends Component {
         {"month": "March", "start": 2, "last": 31, "pto": [], "bank": []},
         {"month": "April", "start": 5, "last": 30, "pto": [], "bank": [17]},
         {"month": "May", "start": 6, "last": 31, "pto": [], "bank": [1, 3]},
-        {"month": "June", "start": 3, "last": 30, "pto": [24,25,26,27], "bank": [16]},
-        {"month": "July", "start": 5, "last": 31, "pto": [], "bank": []},
+        {"month": "June", "start": 3, "last": 30, "pto": [], "bank": [16]},
+        {"month": "July", "start": 5, "last": 31, "pto": [25,26,27], "bank": []},
         {"month": "August", "start": 1, "last": 31, "pto": [], "bank": [15]}
       ],
       remark: null
@@ -34,7 +34,7 @@ class Kalendarz extends Component {
           if (d === i.pto[p]) {
             confirm = false
             return(
-              <div className='dni-pto-text' onClick={() => {this.setState({remark: "I am on PTO from 24 to 27"})}}>{d}</div>
+              <div className='dni-pto-text' onClick={() => {this.setState({remark: "I am on PTO from 25 to 27, will be back on 28 Thursday"})}}>{d}</div>
             )
           } 
         }
