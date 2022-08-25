@@ -7,14 +7,15 @@ class Kalendarz extends Component {
     super ();
     this.state = {
       każdy: [
-        {"month": "January", "start": 6, "last": 31, "pto": [], "bank": [1, 6]},
+        /*{"month": "January", "start": 6, "last": 31, "pto": [], "bank": [1, 6]},
         {"month": "February", "start": 2, "last": 28, "pto": [], "bank": []},
         {"month": "March", "start": 2, "last": 31, "pto": [], "bank": []},
         {"month": "April", "start": 5, "last": 30, "pto": [], "bank": [17]},
-        {"month": "May", "start": 6, "last": 31, "pto": [], "bank": [1, 3]},
+        {"month": "May", "start": 6, "last": 31, "pto": [], "bank": [1, 3]},*/
         {"month": "June", "start": 3, "last": 30, "pto": [], "bank": [16]},
-        {"month": "July", "start": 5, "last": 31, "pto": [25,26,27], "bank": []},
-        {"month": "August", "start": 1, "last": 31, "pto": [], "bank": [15]}
+        {"month": "July", "start": 5, "last": 31, "pto": [], "bank": []},
+        {"month": "August", "start": 1, "last": 31, "pto": [29, 30], "bank": [15]},
+        {"month": "September", "start": 4, "last": 30, "pto": [], "bank": []}
       ],
       remark: null
     }
@@ -34,7 +35,7 @@ class Kalendarz extends Component {
           if (d === i.pto[p]) {
             confirm = false
             return(
-              <div className='dni-pto-text' onClick={() => {this.setState({remark: "I am on PTO from 25 to 27, will be back on 28 Thursday"})}}>{d}</div>
+              <div className='dni-pto-text' onClick={() => {this.setState({remark: "I am on PTO from 29 to 30, will be back on 31 Wednesday"})}}>{d}</div>
             )
           } 
         }
