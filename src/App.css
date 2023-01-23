@@ -124,3 +124,19 @@
 .bottom-note-PTO {
   color: firebrick;
 }
+
+
+.kalkulator-frame {
+  margin: 0 auto;
+  width: 91%;
+  padding: 7px;
+}
+.kalkulator-line {
+  margin: 0 auto;
+  width: auto;
+  box-shadow: 0 3px 7px 0 rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+.kalkulator-button {
+  cursor: pointer;
+}
