@@ -8,7 +8,7 @@ class Kalendarz extends Component {
     this.state = {
       rozpoczęcia: null,
       zakończenia: null,
-      wynik:null,
+      wynik: "Input formate is Month/Date/Year",
       każdy: [
         {"month": "January", "start": 7, "last": 31, "pto": [24], "bank": [2, 6]},
         {"month": "February", "start": 3, "last": 28, "pto": [], "bank": []},
@@ -33,7 +33,7 @@ class Kalendarz extends Component {
       this.setState({wynik: "System has some unidentified problem, maybe try again?"})
     } else {
       if (this.state.rozpoczęcia.split("/").length !== 3 || this.state.zakończenia.split("/").length !== 3) {
-        this.setState({wynik: "the input formate is incorrect, please try something like 12/12/2022"})
+        this.setState({wynik: "the input formate is incorrect, please try something like Month/Date/Year"})
       } else {
         //verify whether the same year
         let splittingRozpoczęcia = this.state.rozpoczęcia.split("/")
@@ -58,19 +58,16 @@ class Kalendarz extends Component {
           }
         } else {
           //not the same year
-          let jedenNumer = 13 - splittingRozpoczęcia[0] + splittingZakończenia[0]
-          if (jedenNumer < 12) {
-            this.setState({wynik: "try the Month/Date/Year again"})
+          //calculate month by year gap
+          let monthGapByYear = 12 * (Number(splittingZakończenia[2]) - Number(splittingRozpoczęcia[2]))
+          let monthGapByMonth = Number(splittingZakończenia[0]) - Number(splittingRozpoczęcia[0])
+          let monthGapByDate = Number(splittingZakończenia[1]) - Number(splittingRozpoczęcia[1])
+          if (monthGapByDate < 0) {
+            let jedenNumer = Number(monthGapByYear) + Number(monthGapByMonth)
+            this.setState({ wynik: "the correct initial term is: " + jedenNumer})
           } else {
-            //if the latter date is smaller than start date
-            //we don't need to add another month
-            //if it is at least the same data, we need to add another month
-            if (splittingZakończenia[1] < splittingRozpoczęcia[1]) {
-              this.setState({ wynik: "the correct initial term is: " + jedenNumer})
-            } else {
-              let compensate = jedenNumer + 1
-              this.setState({ wynik: "the correct initial term is: " + compensate})
-            }
+            let jedenNumer = Number(monthGapByYear) + Number(monthGapByMonth) + 1
+            this.setState({ wynik: "the correct initial term is: " + jedenNumer})
           }
         }
       }
@@ -131,13 +128,17 @@ class Kalendarz extends Component {
     return (
       <body>
         <div className='main-title'>2023 Calendar</div>
-        {/*<div className="kalkulator-frame">
-          <input className="kalkulator-line" onChange={(e) => {this.setState({ rozpoczęcia: e.target.value })}}/>
-          <input className="kalkulator-line" onChange={(e) => {this.setState({ zakończenia: e.target.value })}}/>
-          {this.state.rozpoczęcia !== null & this.state.zakończenia !== null && 
-          <div className="kalkulator-button" onClick={() => {this.kalkulator()}}>Ready to Calculate</div>}
-          <div>{this.state.wynik}</div>
-        </div>*/}
+        <div className="kalkulator-frame">
+          <div className='kalkulator-input-frame'>
+            <input className="kalkulator-line" placeholder='Start of Date' onChange={(e) => {this.setState({ rozpoczęcia: e.target.value })}}/>
+          </div>
+          <div className='kalkulator-input-frame'>
+            <input className="kalkulator-line" placeholder='End of Date' onChange={(e) => {this.setState({ zakończenia: e.target.value })}}/>
+          </div>
+          <div className="kalkulator-button" onClick={() => {this.kalkulator()}}>Ready to Calculate</div>
+          <div className='wynik'>{this.state.wynik}</div>
+        </div>
+        {/**/}
         <div className='center-by-margin'>{miesiąc}</div>
         <div className='remark-frame'>
           <div className='remark' onClick={() => {this.setState({remark: null})}}>{this.state.remark}</div>

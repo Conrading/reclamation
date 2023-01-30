@@ -127,16 +127,43 @@
 
 
 .kalkulator-frame {
+  text-align: center;
   margin: 0 auto;
   width: 91%;
   padding: 7px;
 }
+.kalkulator-input-frame {
+  text-align: center;
+  display: flex;
+  margin: 17px
+}
 .kalkulator-line {
   margin: 0 auto;
-  width: auto;
+  height: 27px;
+  width: 17%;
   box-shadow: 0 3px 7px 0 rgba(0,0,0,0.2);
   border-radius: 3px;
 }
 .kalkulator-button {
   cursor: pointer;
+  text-align: center;
+  margin: 0 auto;
+  padding: 7px;
+  width: 11%;
+  border: 1px solid brown;
+  border-radius: 5px;
+}
+.kalkulator-button:hover {
+  transition: .3s;
+  border: 2px solid darkgoldenrod;
+}
+.kalkulator-button:active {
+  font-weight: 700;
+  border: 3px solid rgb(189, 129, 121);
+  box-shadow: 0 7px 7px 0 solid rgb(0, 0, 0);
+}
+.wynik {
+  text-align: center;
+  margin: 0 auto;
+  padding: 11px;
 }
