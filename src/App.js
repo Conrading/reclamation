@@ -8,7 +8,7 @@ class Kalendarz extends Component {
     this.state = {
       rozpoczęcia: null,
       zakończenia: null,
-      wynik: "Input formate is Month/Date/Year",
+      wynik: "Input format is Month/Date/Year",
       każdy: [
         {"month": "January", "start": 7, "last": 31, "pto": [24], "bank": [2, 6]},
         {"month": "February", "start": 3, "last": 28, "pto": [], "bank": []},
@@ -33,7 +33,7 @@ class Kalendarz extends Component {
       this.setState({wynik: "System has some unidentified problem, maybe try again?"})
     } else {
       if (this.state.rozpoczęcia.split("/").length !== 3 || this.state.zakończenia.split("/").length !== 3) {
-        this.setState({wynik: "the input formate is incorrect, please try something like Month/Date/Year"})
+        this.setState({wynik: "the input format is incorrect, please try something like Month/Date/Year"})
       } else {
         //verify whether the same year
         let splittingRozpoczęcia = this.state.rozpoczęcia.split("/")
@@ -44,7 +44,7 @@ class Kalendarz extends Component {
           //calculate the difference between month, 
           let premiryMiesiąć = splittingZakończenia[0] - splittingRozpoczęcia[0]
           if (premiryMiesiąć > 12 || premiryMiesiąć < 1) {
-            this.setState({wynik: "try the Month/Date/Year again"})
+            this.setState({wynik: "try format Month/Date/Year again"})
           } else {
             //if the latter date is smaller than start date
             //we don't need to add another month
