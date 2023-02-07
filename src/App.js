@@ -8,21 +8,20 @@ class Kalendarz extends Component {
     this.state = {
       rozpoczęcia: null,
       zakończenia: null,
-      wynik: "Input format is Month/Date/Year",
+      wynik: "Wanna try to calculate how many month(s) between two days?",
       każdy: [
-        {"month": "January", "start": 7, "last": 31, "pto": [24], "bank": [2, 6]},
-        {"month": "February", "start": 3, "last": 28, "pto": [], "bank": []},
+        {"month": "January", "start": 7, "last": 31, "pto": [], "bank": [1, 6], "dateName": {"1": "New Year Day", "6": "Three Kings' Day"}},
+        {"month": "February", "start": 3, "last": 28, "pto": [9], "bank": []},
         {"month": "March", "start": 3, "last": 31, "pto": [], "bank": []},
-        /*{"month": "January", "start": 6, "last": 31, "pto": [], "bank": [1, 6]},
-        {"month": "February", "start": 2, "last": 28, "pto": [], "bank": []},
-        {"month": "March", "start": 2, "last": 31, "pto": [], "bank": []},
-        {"month": "April", "start": 5, "last": 30, "pto": [], "bank": [17]},
-        {"month": "May", "start": 6, "last": 31, "pto": [], "bank": [1, 3]},
-        {"month": "June", "start": 3, "last": 30, "pto": [], "bank": [16]},
-        {"month": "July", "start": 5, "last": 31, "pto": [], "bank": []},
-        {"month": "August", "start": 1, "last": 31, "pto": [], "bank": [15]},
-        {"month": "September", "start": 4, "last": 30, "pto": [26, 27, 28, 29, 30], "bank": []},
-        {"month": "Octobor", "start": 6, "last": 31, "pto": [3, 4, 5, 6, 7], "bank": []}*/
+        {"month": "April", "start": 6, "last": 30, "pto": [], "bank": [9, 10], "dateName": {"9": "Easter", "10": "Easter Monday"}},
+        {"month": "May", "start": 1, "last": 31, "pto": [], "bank": [1, 3], "dateName": {"1": "Labour Day", "3": "Constitution Day"}},
+        {"month": "June", "start": 4, "last": 30, "pto": [], "bank": [8], "dateName": {"8": "Corpus Christi Day"}},
+        {"month": "July", "start": 6, "last": 31, "pto": [], "bank": []},
+        {"month": "August", "start": 2, "last": 31, "pto": [], "bank": [15], "dateName": {"15": "Assumption Day"}},
+        {"month": "September", "start": 5, "last": 30, "pto": [], "bank": []},
+        {"month": "Octobor", "start": 0, "last": 31, "pto": [], "bank": []},
+        {"month": "November", "start": 3, "last": 30, "pto": [], "bank": [1, 11], "dateName": {"1": "All Saints' Day", "11": "Independence Day"}},
+        {"month": "December", "start": 5, "last": 31, "pto": [], "bank": [25, 26], "dateName": {"25": "Christmas Day", "26": "St. Stephen's Day"}}
       ],
       remark: null
     }
@@ -30,10 +29,10 @@ class Kalendarz extends Component {
   }
   kalkulator () {
     if (this.state.rozpoczęcia === null || this.state.zakończenia === null) {
-      this.setState({wynik: "System has some unidentified problem, maybe try again?"})
+      this.setState({wynik: "there is problem of input, maybe try again?"})
     } else {
       if (this.state.rozpoczęcia.split("/").length !== 3 || this.state.zakończenia.split("/").length !== 3) {
-        this.setState({wynik: "the input format is incorrect, please try something like Month/Date/Year"})
+        this.setState({wynik: "the input format is incorrect, you sure it is like Month/Date/Year?"})
       } else {
         //verify whether the same year
         let splittingRozpoczęcia = this.state.rozpoczęcia.split("/")
@@ -50,10 +49,10 @@ class Kalendarz extends Component {
             //we don't need to add another month
             //if it is at least the same data, we need to add another month
             if (splittingZakończenia[1] < splittingRozpoczęcia[1]) {
-              this.setState({ wynik: "the correct initial term is: " + premiryMiesiąć})
+              this.setState({ wynik: "the correct number is: " + premiryMiesiąć})
             } else {
               let compensate = premiryMiesiąć + 1
-              this.setState({ wynik: "the correct initial term is: " + compensate})
+              this.setState({ wynik: "the correct number term is: " + compensate})
             }
           }
         } else {
@@ -64,10 +63,10 @@ class Kalendarz extends Component {
           let monthGapByDate = Number(splittingZakończenia[1]) - Number(splittingRozpoczęcia[1])
           if (monthGapByDate < 0) {
             let jedenNumer = Number(monthGapByYear) + Number(monthGapByMonth)
-            this.setState({ wynik: "the correct initial term is: " + jedenNumer})
+            this.setState({ wynik: "the correct number term is: " + jedenNumer})
           } else {
             let jedenNumer = Number(monthGapByYear) + Number(monthGapByMonth) + 1
-            this.setState({ wynik: "the correct initial term is: " + jedenNumer})
+            this.setState({ wynik: "the correct number term is: " + jedenNumer})
           }
         }
       }
@@ -88,7 +87,16 @@ class Kalendarz extends Component {
           if (d === i.pto[p]) {
             confirm = false
             return(
-              <div className='dni-pto-text' onClick={() => {this.setState({remark: "I am OOO on January 24, will be back on January 25"})}}>{d}</div>
+              <div className='tooltip'>
+                <div className='dni-pto-text'>
+                  {d}
+                  <div class="left">
+                      <h3>I am OOO on Feb. 9</h3>
+                      <p>just one day, will be back soon</p>
+                      <i></i>
+                  </div>  
+                </div>
+              </div>
             )
           } 
         }
@@ -96,7 +104,15 @@ class Kalendarz extends Component {
           if (d === i.bank[b]) {
             confirm = false
             return(
-              <div className='dni-bank-text'>{d}</div>
+              <div className='tooltip'>
+                <div className='dni-bank-text'>
+                  {d}
+                  <div class="left">
+                      <h3>{i.dateName[d]}</h3>
+                      <i></i>
+                  </div>  
+                </div>
+              </div>
             )
           } 
         }
@@ -130,23 +146,25 @@ class Kalendarz extends Component {
         <div className='main-title'>2023 Calendar</div>
         <div className="kalkulator-frame">
           <div className='kalkulator-input-frame'>
-            <input className="kalkulator-line" placeholder='Start of Date' onChange={(e) => {this.setState({ rozpoczęcia: e.target.value })}}/>
+            <input className="kalkulator-line" placeholder='Start of Date, Month/Date/Year' onChange={(e) => {this.setState({ rozpoczęcia: e.target.value })}}/>
           </div>
           <div className='kalkulator-input-frame'>
-            <input className="kalkulator-line" placeholder='End of Date' onChange={(e) => {this.setState({ zakończenia: e.target.value })}}/>
+            <input className="kalkulator-line" placeholder='End of Date, Month/Date/Year' onChange={(e) => {this.setState({ zakończenia: e.target.value })}}/>
           </div>
-          <div className="kalkulator-button" onClick={() => {this.kalkulator()}}>Ready to Calculate</div>
+          <div className="kalkulator-button" onClick={() => {this.kalkulator()}}>Calculate</div>
           <div className='wynik'>{this.state.wynik}</div>
         </div>
+        <br />
         {/**/}
         <div className='center-by-margin'>{miesiąc}</div>
         <div className='remark-frame'>
           <div className='remark' onClick={() => {this.setState({remark: null})}}>{this.state.remark}</div>
         </div>
         <div className='bottom-note'>
-          <div className='bottom-note-bank'>* Bank Holiday in Poland</div>
+          <div className='bottom-note-bank' onClick={() => {window.location.href='https://www.officeholidays.com/countries/poland/2023'}}>* Bank Holiday in Poland</div>
           <div className='bottom-note-PTO'>* PTO duration</div>
         </div>
+        <br />
       </body>
     )
   }
