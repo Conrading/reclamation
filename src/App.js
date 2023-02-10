@@ -8,7 +8,8 @@ class Kalendarz extends Component {
     this.state = {
       rozpoczęcia: null,
       zakończenia: null,
-      wynik: "Wanna try to calculate how many month(s) between two days?",
+      wynik: "How many month(s) between two dates?",
+      obliczenieNumer: null,
       każdy: [
         {"month": "January", "start": 7, "last": 31, "pto": [], "bank": [1, 6], "dateName": {"1": "New Year Day", "6": "Three Kings' Day"}},
         {"month": "February", "start": 3, "last": 28, "pto": [9], "bank": []},
@@ -43,16 +44,16 @@ class Kalendarz extends Component {
           //calculate the difference between month, 
           let premiryMiesiąć = splittingZakończenia[0] - splittingRozpoczęcia[0]
           if (premiryMiesiąć > 12 || premiryMiesiąć < 1) {
-            this.setState({wynik: "try format Month/Date/Year again"})
+            this.setState({wynik: "maybe try format Month/Date/Year again?"})
           } else {
             //if the latter date is smaller than start date
             //we don't need to add another month
             //if it is at least the same data, we need to add another month
             if (splittingZakończenia[1] < splittingRozpoczęcia[1]) {
-              this.setState({ wynik: "the correct number is: " + premiryMiesiąć})
+              this.setState({ wynik: "the correct number is: ", obliczenieNumer: premiryMiesiąć})
             } else {
               let compensate = premiryMiesiąć + 1
-              this.setState({ wynik: "the correct number term is: " + compensate})
+              this.setState({ wynik: "the correct number term is: ", obliczenieNumer: compensate})
             }
           }
         } else {
@@ -63,10 +64,10 @@ class Kalendarz extends Component {
           let monthGapByDate = Number(splittingZakończenia[1]) - Number(splittingRozpoczęcia[1])
           if (monthGapByDate < 0) {
             let jedenNumer = Number(monthGapByYear) + Number(monthGapByMonth)
-            this.setState({ wynik: "the correct number term is: " + jedenNumer})
+            this.setState({ wynik: "the correct number term is: ", obliczenieNumer: jedenNumer})
           } else {
             let jedenNumer = Number(monthGapByYear) + Number(monthGapByMonth) + 1
-            this.setState({ wynik: "the correct number term is: " + jedenNumer})
+            this.setState({ wynik: "the correct number term is: ", obliczenieNumer: jedenNumer})
           }
         }
       }
@@ -143,7 +144,7 @@ class Kalendarz extends Component {
     })
     return (
       <body>
-        <div className='main-title'>2023 Calendar</div>
+        <div className='main-title'>- 2023 Calendar -</div>
         <div className="kalkulator-frame">
           <div className='kalkulator-input-frame'>
             <input className="kalkulator-line" placeholder='Start of Date, Month/Date/Year' onChange={(e) => {this.setState({ rozpoczęcia: e.target.value })}}/>
@@ -152,7 +153,10 @@ class Kalendarz extends Component {
             <input className="kalkulator-line" placeholder='End of Date, Month/Date/Year' onChange={(e) => {this.setState({ zakończenia: e.target.value })}}/>
           </div>
           <div className="kalkulator-button" onClick={() => {this.kalkulator()}}>Calculate</div>
-          <div className='wynik'>{this.state.wynik}</div>
+          <div className='wynik-frame'>
+            <div className='wynik-swój'>{this.state.wynik}</div>
+            <div className='wynik-numer'>{this.state.obliczenieNumer}</div>
+          </div>
         </div>
         <br />
         {/**/}
