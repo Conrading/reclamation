@@ -50,7 +50,7 @@ class Kalendarz extends Component {
             zweitenNumer = secondDateFormat
           } else {
             this.setState({wynik: "Did you input positive integer number?", obliczenieNumer: null})
-          }          
+          }
           //now we have two dates, time to do the math
           let splittingRozpoczęcia = this.state.rozpoczęcia.split("/")
           let splittingZakończenia = zweitenNumer.split("/")
@@ -180,7 +180,7 @@ class Kalendarz extends Component {
             <input className="kalkulator-line" placeholder='1st Date, Month/Date/Year' onChange={(e) => {this.setState({ rozpoczęcia: e.target.value })}}/>
           </div>
           <div className='kalkulator-input-frame'>
-            <input className="kalkulator-line" placeholder='2nd Date, Month/Date/Year, or input integer days' onChange={(e) => {this.setState({ zakończenia: e.target.value })}}/>
+            <input className="kalkulator-line" placeholder='2nd Date, Month/Date/Year, or days in integer' onChange={(e) => {this.setState({ zakończenia: e.target.value })}}/>
           </div>
           <div className="kalkulator-button" onClick={() => {this.kalkulator()}}>Calculate</div>
           <div className='wynik-frame'>
