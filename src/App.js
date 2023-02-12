@@ -8,7 +8,7 @@ class Kalendarz extends Component {
     this.state = {
       rozpoczęcia: null,
       zakończenia: null,
-      wynik: "How many month(s) between two dates?",
+      wynik: "How many month(s) between two dates, or counts from 1st date?",
       obliczenieNumer: null,
       każdy: [
         {"month": "January", "start": 7, "last": 31, "pto": [], "bank": [1, 6], "dateName": {"1": "New Year Day", "6": "Three Kings' Day"}},
@@ -30,46 +30,76 @@ class Kalendarz extends Component {
   }
   kalkulator () {
     if (this.state.rozpoczęcia === null || this.state.zakończenia === null) {
-      this.setState({wynik: "there is problem of input, maybe try again?"})
+      //confirm both input are valid
+      this.setState({wynik: "there is problem of input, maybe try again?", obliczenieNumer: null})
     } else {
-      if (this.state.rozpoczęcia.split("/").length !== 3 || this.state.zakończenia.split("/").length !== 3) {
-        this.setState({wynik: "the input format is incorrect, you sure it is like Month/Date/Year?"})
-      } else {
-        //verify whether the same year
-        let splittingRozpoczęcia = this.state.rozpoczęcia.split("/")
-        let splittingZakończenia = this.state.zakończenia.split("/")
-        if (splittingRozpoczęcia[2] === splittingZakończenia[2]) {
-          //okay, same year
-          //we see the first number is month
-          //calculate the difference between month, 
-          let premiryMiesiąć = splittingZakończenia[0] - splittingRozpoczęcia[0]
-          if (premiryMiesiąć > 12 || premiryMiesiąć < 1) {
-            this.setState({wynik: "maybe try format Month/Date/Year again?"})
+      if (this.state.rozpoczęcia.split("/").length === 3) {
+        //confirm 1st Date is correct
+        //verify 2nd Date
+        if (this.state.zakończenia.split("/").length === 3 || Number.isInteger(Number(this.state.zakończenia)) === true) {
+          var zweitenNumer = this.state.zakończenia
+          //2nd Date is valid
+          //verify whether this is integer number
+          if (Number.isInteger(Number(this.state.zakończenia)) === true && Number(this.state.zakończenia) > 0) {
+            //next leap year is 2024 
+            var date1 = new Date(this.state.rozpoczęcia);
+            var Difference_In_Time = this.state.zakończenia * (1000 * 3600 * 24)
+            var secondDateNumer = date1.getTime() + Difference_In_Time
+            const defaultTime = new Date(secondDateNumer);
+            var secondDateFormat = (Number(defaultTime.getMonth()) + 1) + "/" + defaultTime.getDate() + "/" + (Number(defaultTime.getYear()) + 1900)
+            zweitenNumer = secondDateFormat
           } else {
-            //if the latter date is smaller than start date
-            //we don't need to add another month
-            //if it is at least the same data, we need to add another month
-            if (splittingZakończenia[1] < splittingRozpoczęcia[1]) {
-              this.setState({ wynik: "the correct number is: ", obliczenieNumer: premiryMiesiąć})
+            this.setState({wynik: "Did you input positive integer number?", obliczenieNumer: null})
+          }          
+          //now we have two dates, time to do the math
+          let splittingRozpoczęcia = this.state.rozpoczęcia.split("/")
+          let splittingZakończenia = zweitenNumer.split("/")
+          //confirm whether that all make sense
+          //2nd date is later than start of date
+          if (splittingRozpoczęcia[2] > splittingZakończenia[2]) {
+            this.setState({wynik: "maybe wrong year?", obliczenieNumer: null})
+          } else if (splittingRozpoczęcia[2] === splittingZakończenia[2] && splittingRozpoczęcia[0] > splittingZakończenia[0]) {
+            this.setState({wynik: "maybe wrong month?", obliczenieNumer: null})
+          } else if (splittingRozpoczęcia[2] === splittingZakończenia[2] && splittingRozpoczęcia[0] === splittingZakończenia[0] && splittingRozpoczęcia[1] > splittingZakończenia[1] ) {
+            this.setState({wynik: "maybe wrong date?", obliczenieNumer: null})
+          } else if (splittingRozpoczęcia[2] === splittingZakończenia[2]) {
+            //okay, same year
+            //we see the first number is month
+            //calculate the difference between month, 
+            let premiryMiesiąć = splittingZakończenia[0] - splittingRozpoczęcia[0]
+            if (premiryMiesiąć > 12 || premiryMiesiąć < 1) {
+              this.setState({wynik: "maybe month typo?", obliczenieNumer: null})
             } else {
-              let compensate = premiryMiesiąć + 1
-              this.setState({ wynik: "the correct number term is: ", obliczenieNumer: compensate})
+              //if the 2nd date is smaller than 1st date
+              //we don't need to add another month
+              //if it is at least the same data, we need to add another month
+              if (splittingZakończenia[1] < splittingRozpoczęcia[1]) {
+                this.setState({ wynik: "the correct term is: ", obliczenieNumer: premiryMiesiąć})
+              } else {
+                let compensate = premiryMiesiąć + 1
+                this.setState({ wynik: "the correct term is: ", obliczenieNumer: compensate})
+              }
+            }
+          } else {
+            //not the same year
+            //calculate month by year gap
+            let monthGapByYear = 12 * (Number(splittingZakończenia[2]) - Number(splittingRozpoczęcia[2]))
+            let monthGapByMonth = Number(splittingZakończenia[0]) - Number(splittingRozpoczęcia[0])
+            let monthGapByDate = Number(splittingZakończenia[1]) - Number(splittingRozpoczęcia[1])
+            if (monthGapByDate < 0) {
+              let jedenNumer = Number(monthGapByYear) + Number(monthGapByMonth)
+              this.setState({ wynik: "the correct term is: ", obliczenieNumer: jedenNumer})
+            } else {
+              let jedenNumer = Number(monthGapByYear) + Number(monthGapByMonth) + 1
+              this.setState({ wynik: "the correct term is: ", obliczenieNumer: jedenNumer})
             }
           }
         } else {
-          //not the same year
-          //calculate month by year gap
-          let monthGapByYear = 12 * (Number(splittingZakończenia[2]) - Number(splittingRozpoczęcia[2]))
-          let monthGapByMonth = Number(splittingZakończenia[0]) - Number(splittingRozpoczęcia[0])
-          let monthGapByDate = Number(splittingZakończenia[1]) - Number(splittingRozpoczęcia[1])
-          if (monthGapByDate < 0) {
-            let jedenNumer = Number(monthGapByYear) + Number(monthGapByMonth)
-            this.setState({ wynik: "the correct number term is: ", obliczenieNumer: jedenNumer})
-          } else {
-            let jedenNumer = Number(monthGapByYear) + Number(monthGapByMonth) + 1
-            this.setState({ wynik: "the correct number term is: ", obliczenieNumer: jedenNumer})
-          }
+          this.setState({wynik: "the 2nd Date format could be incorrect, try Month/Date/Year format, or input integer number", obliczenieNumer: null})
         }
+      } else {
+        //confirm the 1st Date input is invalid
+        this.setState({wynik: "the 1st Date format is incorrect, maybe try Month/Date/Year?", obliczenieNumer: null})
       }
     }
   }
@@ -147,10 +177,10 @@ class Kalendarz extends Component {
         <div className='main-title'>- 2023 Calendar -</div>
         <div className="kalkulator-frame">
           <div className='kalkulator-input-frame'>
-            <input className="kalkulator-line" placeholder='Start of Date, Month/Date/Year' onChange={(e) => {this.setState({ rozpoczęcia: e.target.value })}}/>
+            <input className="kalkulator-line" placeholder='1st Date, Month/Date/Year' onChange={(e) => {this.setState({ rozpoczęcia: e.target.value })}}/>
           </div>
           <div className='kalkulator-input-frame'>
-            <input className="kalkulator-line" placeholder='End of Date, Month/Date/Year' onChange={(e) => {this.setState({ zakończenia: e.target.value })}}/>
+            <input className="kalkulator-line" placeholder='2nd Date, Month/Date/Year, or input integer' onChange={(e) => {this.setState({ zakończenia: e.target.value })}}/>
           </div>
           <div className="kalkulator-button" onClick={() => {this.kalkulator()}}>Calculate</div>
           <div className='wynik-frame'>
