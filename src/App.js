@@ -37,7 +37,7 @@ class Kalendarz extends Component {
         //confirm 1st Date is correct
         //verify 2nd Date
         if (this.state.zakończenia.split("/").length === 3 || Number.isInteger(Number(this.state.zakończenia)) === true) {
-          var zweitenNumer = this.state.zakończenia
+          var zakończeniaUpdate = this.state.zakończenia
           //2nd Date is valid
           //verify whether this is integer number
           if (Number.isInteger(Number(this.state.zakończenia)) === true && Number(this.state.zakończenia) > 0) {
@@ -47,33 +47,33 @@ class Kalendarz extends Component {
             var secondDateNumer = date1.getTime() + Difference_In_Time
             const defaultTime = new Date(secondDateNumer);
             var secondDateFormat = (Number(defaultTime.getMonth()) + 1) + "/" + defaultTime.getDate() + "/" + (Number(defaultTime.getYear()) + 1900)
-            zweitenNumer = secondDateFormat
+            zakończeniaUpdate = secondDateFormat
           } else {
             this.setState({wynik: "Did you input positive integer number?", obliczenieNumer: null})
           }
           //now we have two dates, time to do the math
           let splittingRozpoczęcia = this.state.rozpoczęcia.split("/")
-          let splittingZakończenia = zweitenNumer.split("/")
+          let splittingZakończenia = zakończeniaUpdate.split("/")
           //confirm whether that all make sense
           //2nd date is later than start of date
-          if (splittingRozpoczęcia[2] > splittingZakończenia[2]) {
+          if (Number(splittingRozpoczęcia[2]) > Number(splittingZakończenia[2])) {
             this.setState({wynik: "maybe wrong year?", obliczenieNumer: null})
-          } else if (splittingRozpoczęcia[2] === splittingZakończenia[2] && splittingRozpoczęcia[0] > splittingZakończenia[0]) {
+          } else if (splittingRozpoczęcia[2] === splittingZakończenia[2] && Number(splittingRozpoczęcia[0]) > Number(splittingZakończenia[0])) {
             this.setState({wynik: "maybe wrong month?", obliczenieNumer: null})
-          } else if (splittingRozpoczęcia[2] === splittingZakończenia[2] && splittingRozpoczęcia[0] === splittingZakończenia[0] && splittingRozpoczęcia[1] > splittingZakończenia[1] ) {
+          } else if (splittingRozpoczęcia[2] === splittingZakończenia[2] && splittingRozpoczęcia[0] === splittingZakończenia[0] && Number(splittingRozpoczęcia[1]) > Number(splittingZakończenia[1]) ) {
             this.setState({wynik: "maybe wrong date?", obliczenieNumer: null})
           } else if (splittingRozpoczęcia[2] === splittingZakończenia[2]) {
             //okay, same year
             //we see the first number is month
             //calculate the difference between month, 
-            let premiryMiesiąć = splittingZakończenia[0] - splittingRozpoczęcia[0]
-            if (premiryMiesiąć > 12 || premiryMiesiąć < 1) {
+            let premiryMiesiąć = Number(splittingZakończenia[0]) - Number(splittingRozpoczęcia[0])
+            if (premiryMiesiąć > 12 || premiryMiesiąć < 0) {
               this.setState({wynik: "maybe month typo?", obliczenieNumer: null})
             } else {
               //if the 2nd date is smaller than 1st date
               //we don't need to add another month
               //if it is at least the same data, we need to add another month
-              if (splittingZakończenia[1] < splittingRozpoczęcia[1]) {
+              if (Number(splittingZakończenia[1]) < Number(splittingRozpoczęcia[1])) {
                 this.setState({ wynik: "the correct term is: ", obliczenieNumer: premiryMiesiąć})
               } else {
                 let compensate = premiryMiesiąć + 1
@@ -174,13 +174,13 @@ class Kalendarz extends Component {
     })
     return (
       <body>
-        <div className='main-title'>- 2023 Calendar -</div>
+        <div className='main-title'>-- 2023 Calendar --</div>
         <div className="kalkulator-frame">
           <div className='kalkulator-input-frame'>
-            <input className="kalkulator-line" placeholder='1st Date, Month/Date/Year' onChange={(e) => {this.setState({ rozpoczęcia: e.target.value })}}/>
+            <input className="kalkulator-line" placeholder='1st date [Month/Date/Year]' onChange={(e) => {this.setState({ rozpoczęcia: e.target.value })}}/>
           </div>
           <div className='kalkulator-input-frame'>
-            <input className="kalkulator-line" placeholder='2nd Date, Month/Date/Year, or days in integer' onChange={(e) => {this.setState({ zakończenia: e.target.value })}}/>
+            <input className="kalkulator-line" placeholder='2nd date [Month/Date/Year], or days in integer' onChange={(e) => {this.setState({ zakończenia: e.target.value })}}/>
           </div>
           <div className="kalkulator-button" onClick={() => {this.kalkulator()}}>Calculate</div>
           <div className='wynik-frame'>
@@ -197,6 +197,10 @@ class Kalendarz extends Component {
         <div className='bottom-note'>
           <div className='bottom-note-bank' onClick={() => {window.location.href='https://www.officeholidays.com/countries/poland/2023'}}>* Bank Holiday in Poland</div>
           <div className='bottom-note-PTO'>* PTO duration</div>
+        </div>
+        <br />
+        <div className='bottom-note'>
+          <div>All Rights NOT Reserved 2023</div>
         </div>
         <br />
       </body>
