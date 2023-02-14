@@ -169,18 +169,6 @@
       color: blue;
     }
 }
-.bottom-note {
-  margin: 0 auto;
-  padding-top: 37px;
-  width: 71%;
-}
-.bottom-note-bank {
-  cursor: pointer;
-  color: darkcyan;
-}
-.bottom-note-PTO {
-  color: firebrick;
-}
 
 
 .kalkulator-frame {
@@ -240,4 +228,19 @@
   text-align: left;
   margin-left: 7px;
   font-weight: 500;
+}
+
+
+
+.bottom-note {
+  margin: 0 auto;
+  padding-top: 17px;
+  width: 71%;
+}
+.bottom-note-bank {
+  cursor: pointer;
+  color: darkcyan;
+}
+.bottom-note-PTO {
+  color: firebrick;
 }

@@ -189,11 +189,11 @@ class Kalendarz extends Component {
           </div>
         </div>
         <br />
-        {/**/}
         <div className='center-by-margin'>{miesiąc}</div>
         <div className='remark-frame'>
           <div className='remark' onClick={() => {this.setState({remark: null})}}>{this.state.remark}</div>
         </div>
+        <br />
         <div className='bottom-note'>
           <div className='bottom-note-bank' onClick={() => {window.location.href='https://www.officeholidays.com/countries/poland/2023'}}>* Bank Holiday in Poland</div>
           <div className='bottom-note-PTO'>* PTO duration</div>
@@ -202,7 +202,6 @@ class Kalendarz extends Component {
         <div className='bottom-note'>
           <div>All Rights may not be NOT Reserved 2023</div>
         </div>
-        <br />
       </body>
     )
   }
