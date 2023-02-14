@@ -200,8 +200,9 @@ class Kalendarz extends Component {
         </div>
         <br />
         <div className='bottom-note'>
-          <div>All Rights may not be NOT Reserved 2023</div>
+          <div>All Rights may not be Reserved 2023</div>
         </div>
+        <br />
       </body>
     )
   }
