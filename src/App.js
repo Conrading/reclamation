@@ -174,7 +174,7 @@ class Kalendarz extends Component {
     })
     return (
       <body>
-        <div className='main-title'>-- 2023 Calendar --</div>
+        <div className='main-title'>-- Calendarizing 2023 --</div>
         <div className="kalkulator-frame">
           <div className='kalkulator-input-frame'>
             <input className="kalkulator-line" placeholder='1st date [Month/Date/Year]' onChange={(e) => {this.setState({ rozpoczęcia: e.target.value })}}/>
