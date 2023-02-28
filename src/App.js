@@ -12,8 +12,8 @@ class Kalendarz extends Component {
       obliczenieNumer: null,
       każdy: [
         {"month": "January", "start": 7, "last": 31, "pto": [], "bank": [1, 6], "dateName": {"1": "New Year Day", "6": "Three Kings' Day"}},
-        {"month": "February", "start": 3, "last": 28, "pto": [9], "bank": []},
-        {"month": "March", "start": 3, "last": 31, "pto": [], "bank": []},
+        {"month": "February", "start": 3, "last": 28, "pto": [], "bank": []},
+        {"month": "March", "start": 3, "last": 31, "pto": [2], "bank": []},
         {"month": "April", "start": 6, "last": 30, "pto": [], "bank": [9, 10], "dateName": {"9": "Easter", "10": "Easter Monday"}},
         {"month": "May", "start": 1, "last": 31, "pto": [], "bank": [1, 3], "dateName": {"1": "Labour Day", "3": "Constitution Day"}},
         {"month": "June", "start": 4, "last": 30, "pto": [], "bank": [8], "dateName": {"8": "Corpus Christi Day"}},
@@ -122,7 +122,7 @@ class Kalendarz extends Component {
                 <div className='dni-pto-text'>
                   {d}
                   <div class="left">
-                      <h3>I am OOO on Feb. 9</h3>
+                      <h3>I am OOO on Mar. 2</h3>
                       <p>just one day, will be back soon</p>
                       <i></i>
                   </div>  
