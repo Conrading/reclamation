@@ -13,9 +13,9 @@ class Kalendarz extends Component {
       każdy: [
         {"month": "January", "start": 7, "last": 31, "pto": [], "bank": [1, 6], "dateName": {"1": "New Year Day", "6": "Three Kings' Day"}},
         {"month": "February", "start": 3, "last": 28, "pto": [], "bank": []},
-        {"month": "March", "start": 3, "last": 31, "pto": [2], "bank": []},
+        {"month": "March", "start": 3, "last": 31, "pto": [], "bank": []},
         {"month": "April", "start": 6, "last": 30, "pto": [], "bank": [9, 10], "dateName": {"9": "Easter", "10": "Easter Monday"}},
-        {"month": "May", "start": 1, "last": 31, "pto": [], "bank": [1, 3], "dateName": {"1": "Labour Day", "3": "Constitution Day"}},
+        {"month": "May", "start": 1, "last": 31, "pto": [29], "bank": [1, 3], "dateName": {"1": "Labour Day", "3": "Constitution Day"}},
         {"month": "June", "start": 4, "last": 30, "pto": [], "bank": [8], "dateName": {"8": "Corpus Christi Day"}},
         {"month": "July", "start": 6, "last": 31, "pto": [], "bank": []},
         {"month": "August", "start": 2, "last": 31, "pto": [], "bank": [15], "dateName": {"15": "Assumption Day"}},
@@ -24,7 +24,7 @@ class Kalendarz extends Component {
         {"month": "November", "start": 3, "last": 30, "pto": [], "bank": [1, 11], "dateName": {"1": "All Saints' Day", "11": "Independence Day"}},
         {"month": "December", "start": 5, "last": 31, "pto": [], "bank": [25, 26], "dateName": {"25": "Christmas Day", "26": "St. Stephen's Day"}}
       ],
-      remark: null
+      remark: "I am OOO on May 29"
     }
     this.kalkulator = this.kalkulator.bind(this)
   }
@@ -122,7 +122,7 @@ class Kalendarz extends Component {
                 <div className='dni-pto-text'>
                   {d}
                   <div class="left">
-                      <h3>I am OOO on Mar. 2</h3>
+                      <h3>I am OOO on May. 29</h3>
                       <p>just one day, will be back soon</p>
                       <i></i>
                   </div>  
@@ -188,11 +188,11 @@ class Kalendarz extends Component {
             <div className='wynik-numer'>{this.state.obliczenieNumer}</div>
           </div>
         </div>
-        <br />
-        <div className='center-by-margin'>{miesiąc}</div>
+        <div className='center-separation-line'><hr /></div>
         <div className='remark-frame'>
           <div className='remark' onClick={() => {this.setState({remark: null})}}>{this.state.remark}</div>
         </div>
+        <div className='center-by-margin'>{miesiąc}</div>
         <br />
         <div className='bottom-note'>
           <div className='bottom-note-bank' onClick={() => {window.location.href='https://www.officeholidays.com/countries/poland/2023'}}>* Bank Holiday in Poland</div>
