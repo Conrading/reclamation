@@ -11,10 +11,10 @@ class Kalendarz extends Component {
       wynik: "How many month(s) between two dates, or counts from 1st date?",
       obliczenieNumer: null,
       każdy: [
-        {"month": "January", "start": 7, "last": 31, "pto": [], "bank": [1, 6], "dateName": {"1": "New Year Day", "6": "Three Kings' Day"}},
+        /*{"month": "January", "start": 7, "last": 31, "pto": [], "bank": [1, 6], "dateName": {"1": "New Year Day", "6": "Three Kings' Day"}},
         {"month": "February", "start": 3, "last": 28, "pto": [], "bank": []},
         {"month": "March", "start": 3, "last": 31, "pto": [], "bank": []},
-        {"month": "April", "start": 6, "last": 30, "pto": [], "bank": [9, 10], "dateName": {"9": "Easter", "10": "Easter Monday"}},
+        {"month": "April", "start": 6, "last": 30, "pto": [], "bank": [9, 10], "dateName": {"9": "Easter", "10": "Easter Monday"}},*/
         {"month": "May", "start": 1, "last": 31, "pto": [29], "bank": [1, 3], "dateName": {"1": "Labour Day", "3": "Constitution Day"}},
         {"month": "June", "start": 4, "last": 30, "pto": [], "bank": [8], "dateName": {"8": "Corpus Christi Day"}},
         {"month": "July", "start": 6, "last": 31, "pto": [], "bank": []},
@@ -190,7 +190,7 @@ class Kalendarz extends Component {
         </div>
         <div className='center-separation-line'><hr /></div>
         <div className='remark-frame'>
-          <div className='remark' onClick={() => {this.setState({remark: null})}}>{this.state.remark}</div>
+          <div className='remark' onClick={() => {this.setState({remark: "if you ever care"})}}>{this.state.remark}</div>
         </div>
         <div className='center-by-margin'>{miesiąc}</div>
         <br />

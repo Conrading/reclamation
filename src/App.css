@@ -7,6 +7,25 @@
   color: whitesmoke;
   font-family:'Courier New', Courier, monospace;
   background-color: #444444;
+  animation-duration: 5s;
+  animation-name: maintitle;
+}
+@keyframes maintitle {
+    0% {
+      font-size: 11px;
+      color: rgb(63, 61, 61);
+    }
+    31% {
+      font-size: 17px;
+      color: rgb(117, 5, 5);
+      text-shadow: 0 0 10px #fff,
+                   0 0 20px #fff, 
+                   0 0 40px #fff;
+    }
+    100% {
+      font-size: 23px;
+      color: whitesmoke;
+    }
 }
 .makeRow {
   display: flex;
@@ -20,12 +39,26 @@
 }
 
 
-.center-by-margin {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 17px;
-  margin: 0 auto;
-  width: 71%;
+/*to distinguish size of the monitor*/
+@media screen 
+and (min-device-width: 1600px) {
+  .center-by-margin {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 17px;
+    margin: 0 auto;
+    width: 71%;
+  }
+}
+@media screen 
+and (max-device-width: 1600px) {
+  .center-by-margin {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+    margin: 0 auto;
+    width: 71%;
+  }
 }
 
 .card-project {
@@ -152,7 +185,7 @@
   cursor: pointer;
   text-align: center;
   margin-top: 31px;
-  color: blue;
+  color: darkblue;
   font-family: cursive;
   font-size: 17px;
   animation-duration: 3s;
@@ -190,7 +223,7 @@
 .kalkulator-line {
   margin: 0 auto;
   height: 27px;
-  width: 17%;
+  width: 23%;
   border: #fff;
   box-shadow: 0 3px 7px 0 rgba(0,0,0,0.2);
   border-radius: 3px;
