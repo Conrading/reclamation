@@ -15,8 +15,8 @@ class Kalendarz extends Component {
         {"month": "February", "start": 3, "last": 28, "pto": [], "bank": []},
         {"month": "March", "start": 3, "last": 31, "pto": [], "bank": []},
         {"month": "April", "start": 6, "last": 30, "pto": [], "bank": [9, 10], "dateName": {"9": "Easter", "10": "Easter Monday"}},*/
-        {"month": "May", "start": 1, "last": 31, "pto": [29], "bank": [1, 3], "dateName": {"1": "Labour Day", "3": "Constitution Day"}},
-        {"month": "June", "start": 4, "last": 30, "pto": [], "bank": [8], "dateName": {"8": "Corpus Christi Day"}},
+        {"month": "May", "start": 1, "last": 31, "pto": [], "bank": [1, 3], "dateName": {"1": "Labour Day", "3": "Constitution Day"}},
+        {"month": "June", "start": 4, "last": 30, "pto": [15, 16], "bank": [8], "dateName": {"8": "Corpus Christi Day"}},
         {"month": "July", "start": 6, "last": 31, "pto": [], "bank": []},
         {"month": "August", "start": 2, "last": 31, "pto": [], "bank": [15], "dateName": {"15": "Assumption Day"}},
         {"month": "September", "start": 5, "last": 30, "pto": [], "bank": []},
@@ -24,7 +24,7 @@ class Kalendarz extends Component {
         {"month": "November", "start": 3, "last": 30, "pto": [], "bank": [1, 11], "dateName": {"1": "All Saints' Day", "11": "Independence Day"}},
         {"month": "December", "start": 5, "last": 31, "pto": [], "bank": [25, 26], "dateName": {"25": "Christmas Day", "26": "St. Stephen's Day"}}
       ],
-      remark: "I am OOO on May 29"
+      remark: "I am OOO on June 15 and 16"
     }
     this.kalkulator = this.kalkulator.bind(this)
   }
@@ -122,8 +122,8 @@ class Kalendarz extends Component {
                 <div className='dni-pto-text'>
                   {d}
                   <div class="left">
-                      <h3>I am OOO on May. 29</h3>
-                      <p>just one day, will be back soon</p>
+                      <h3>I am Out of Office</h3>
+                      <p>from June 15 to 16</p>
                       <i></i>
                   </div>  
                 </div>
@@ -190,7 +190,7 @@ class Kalendarz extends Component {
         </div>
         <div className='center-separation-line'><hr /></div>
         <div className='remark-frame'>
-          <div className='remark' onClick={() => {this.setState({remark: "if you ever care"})}}>{this.state.remark}</div>
+          <div className='remark' onClick={() => {this.setState({remark: "will be back on June 19"})}}>{this.state.remark}</div>
         </div>
         <div className='center-by-margin'>{miesiąc}</div>
         <br />
