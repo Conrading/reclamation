@@ -8,7 +8,7 @@
   font-family:'Courier New', Courier, monospace;
   background-color: #444444;
   animation-duration: 5s;
-  animation-name: maintitle;
+  /*animation-name: maintitle;*/
 }
 @keyframes maintitle {
     0% {
