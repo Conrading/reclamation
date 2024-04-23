@@ -23,7 +23,6 @@ button {
   padding: 10px 20px;
   background-color: white;
   border-radius: 5px;
-  border: 1px solid burlywood;
   font-size: 13px;
   cursor: pointer;
   margin: 13px;
@@ -37,6 +36,6 @@ button:hover {
 }
 
 label {
-  font-size: 18px;
+  font-size: 11px;
   margin-top: 20px;
 }

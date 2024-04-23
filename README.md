@@ -1,4 +1,4 @@
-# Simply a Calendar used to show bank holiday status
+# calculator
 
 #### Feature:
 
