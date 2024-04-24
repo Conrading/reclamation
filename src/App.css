@@ -10,32 +10,30 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  margin-bottom: 17px;
   color: white;
 }
 
-textarea {
-  width: 89%;
-  padding: 10px;
-  margin: 10px 0;
-}
 
 button {
-  padding: 10px 20px;
-  background-color: white;
-  border-radius: 5px;
-  font-size: 13px;
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #aaa;
+  border-radius: 4px 4px 0 0;
+  background-color: #f4f4f4;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
   cursor: pointer;
-  margin: 13px;
+  transition: background-color 0.3s ease;
 }
 button:hover {
-  font-weight: 500;
-  background-color: antiquewhite;
-  border-color: blue;
-  transition: 0.3s;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: #e0e0e0;
+}
+button:active {
+  outline: none;
+  background-color: #d4d4d4;
 }
 
-label {
-  font-size: 11px;
-  margin-top: 20px;
-}

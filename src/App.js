@@ -26,7 +26,7 @@ function App() {
             className={activeTab === 'Kalkulator' ? 'active-tab' : 'inactive-tab'}
             onClick={() => handleTabClick('Kalkulator')}
           >
-            Kalkulator
+            Calculator
           </button>
         </div>
         {activeTab === 'TextTurningComponent' && <TextTurningComponent />}

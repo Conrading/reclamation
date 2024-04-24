@@ -1,0 +1,23 @@
+
+.TextTuningPageButton {
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: auto;
+    width: 79px;
+    background-color:white;
+    border: 1px rgb(255, 255, 255);
+    border-radius: 5px;
+    font-size: 13px;
+  }
+  .TextTuningPageButton:hover {
+    font-weight: 500;
+    background-color: antiquewhite;
+    border-color: blue;
+    transition: 0.3s;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  .TextTuningPageButton:active {
+    font-weight: 700;
+    transition: 0.3s;
+    box-shadow: 0 7px 11px 0 rgba(0,0,0,0.2);
+  }

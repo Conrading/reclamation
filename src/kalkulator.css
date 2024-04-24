@@ -93,15 +93,16 @@ and (max-device-width: 1600px) {
   margin: 0 auto;
   padding: 7px;
   width: 11%;
-  border: 1px solid brown;
+  background-color:whitesmoke;
+  border: white;
   border-radius: 5px;
   transition: 0.3s;
 }
 .kalkulator-button:hover {
   transition: .3s;
   font-weight: 500;
-  background-color:#EEEEEE;
   border: 1px solid rgb(0, 0, 0);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 .kalkulator-button:active {
   font-weight: 700;
